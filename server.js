@@ -6,8 +6,11 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`PANDA CAFE running on ${PORT}`));
+}
+module.exports = app;
 
 // --- CONFIG ---
 const ADMIN_NAME = 'panda cafe 777';
