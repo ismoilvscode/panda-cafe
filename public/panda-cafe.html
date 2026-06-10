@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANDA CAFE — Душанбе</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--cream:#FFF8F0;--brown:#5C3D2E;--terra:#D97D54;--gold:#C9A66B;--dark:#2B1E16}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,sans-serif;background:var(--cream);color:var(--dark);line-height:1.6}
+a,button,.card,.menu-item,.links a,.btn,input,select{transition:all .3s ease}
+h1,h2{font-family:'Playfair Display',serif}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hero-content,.section-title,.card,.menu-item,.testi{animation:fadeIn .3s ease both}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,248,240,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(92,61,46,.1)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font-weight:700;font-size:24px;color:var(--brown);letter-spacing:1px} .logo span{color:var(--terra)}
+.links{display:flex;gap:24px} .links a{text-decoration:none;color:var(--dark);font-weight:500;opacity:.85} .links a:hover{opacity:1;color:var(--terra)}
+.btn{background:var(--brown);color:white;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;transition:.3s;display:inline-block;border:none;cursor:pointer}
+.btn:hover{background:var(--terra);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:2px solid white;color:white}
+.hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600') center/cover;filter:brightness(.55)}
+.hero-content{position:relative;color:white;max-width:700px}
+.hero h1{font-size:clamp(40px,6vw,64px);line-height:1.1;margin-bottom:16px}
+.hero p{font-size:19px;opacity:.92;margin-bottom:28px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:36px;color:var(--brown);margin-bottom:8px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:white;border-radius:24px;padding:28px;box-shadow:0 10px 30px rgba(92,61,46,.08);transition:.3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(92,61,46,.12)}
+.card i{font-size:28px;color:var(--terra);margin-bottom:12px;display:block}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1200px){.menu-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.menu-grid{grid-template-columns:repeat(3,1fr);gap:10px}.menu-img{height:110px}.menu-body{padding:12px}.menu-body h3{font-size:15px}}
+@media(min-width:1400px){.menu-grid{grid-template-columns:repeat(8,1fr)}}
+.menu-item{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06);transition:.3s}
+.menu-item:hover{transform:translateY(-4px)}
+.menu-img{height:180px;background-size:cover;background-position:center;transition:transform .3s ease}
+.menu-item:hover .menu-img{transform:scale(1.05)}
+.menu-body{padding:18px}
+.menu-body h3{display:flex;justify-content:space-between;align-items:center;font-size:18px;margin-bottom:6px}
+.price{color:var(--terra);font-weight:700}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery div{height:220px;border-radius:16px;background-size:cover;background-position:center;transition:transform .3s ease}
+.gallery div:hover{transform:scale(1.03)}
+.testi{background:var(--brown);color:var(--cream);border-radius:24px;padding:32px}
+.testi i{color:var(--gold);margin-bottom:10px}
+.form{background:white;border-radius:24px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+input,select{width:100%;padding:14px;border:1px solid #e5d8cf;border-radius:12px;font-family:inherit;font-size:16px;background:#fffdfa}
+input:focus{outline:2px solid var(--gold)}
+.full{grid-column:1/-1}
+footer{background:var(--dark);color:var(--cream);padding:40px 0;margin-top:60px;text-align:center}
+footer a{color:var(--gold);text-decoration:none}
+@media(max-width:768px){.links{display:none}.form-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">PANDA <span>CAFE</span></div>
+    <div class="links">
+      <a href="#menu">Меню</a>
+      <a href="#about">О нас</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#bron">Бронь</a>
+      <a href="#contact">Контакты</a>
+    </div>
+    <a class="btn" href="https://instagram.com/cafepanda.tj" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-content">
+    <h1>Настоящий кофе, атмосфера Хуҷад</h1>
+    <p>PANDA CAFE — место, где каждое утро начинается с аромата эспрессо. Современный дизайн, теплая кухня и уют для работы и встреч.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn">Посмотреть меню</a>
+      <a href="#bron" class="btn btn-outline">Забронировать</a>
+    </div>
+    <p style="margin-top:20px;font-size:14px;opacity:.85"><i class="fa-regular fa-clock"></i> Ежедневно с 11:00 до 22:00 • Хуҷад ул. Рудаки 45</p>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-title"><h2>О нас</h2><p>Три причины, почему к нам возвращаются</p></div>
+    <div class="grid-3">
+      <div class="card"><i class="fa-solid fa-mug-hot"></i><h3>Отборные зерна</h3><p>Кофе из Бразилии и Эфиопии, обжарка в Хуҷада. Каждая чашка — свежая.</p></div>
+      <div class="card"><i class="fa-solid fa-award"></i><h3>Профессиональные бариста</h3><p>Латте-арт и авторские рецепты. Наши бариста — призеры конкурсов.</p></div>
+      <div class="card"><i class="fa-solid fa-couch"></i><h3>Теплая атмосфера</h3><p>Минимализм, натуральное дерево, быстрый Wi-Fi. Идеально для работы.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="section" style="background:#fff3e7">
+  <div class="container">
+    <div class="section-title"><h2>Наше меню</h2><p>Хиты сегодня</p></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?q=80&w=600')"></div><div class="menu-body"><h3>Эспрессо <span class="price">18 TJS</span></h3><p>Крепкий, чистый вкус</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600')"></div><div class="menu-body"><h3>Капучино <span class="price">25 TJS</span></h3><p>С бархатной пенкой</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=600')"></div><div class="menu-body"><h3>Латте <span class="price">28 TJS</span></h3><p>Авторский арт</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1571934811356-5cc061b6821f?q=80&w=600')"></div><div class="menu-body"><h3>Зеленый чай <span class="price">15 TJS</span></h3><p>Из Гиссара</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=600')"></div><div class="menu-body"><h3>Самбуса <span class="price">12 TJS</span></h3><p>Сочная, из тандыра</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1647163920635-5b3c6ad5d9de?q=80&w=600')"></div><div class="menu-body"><h3>Плов кафе <span class="price">45 TJS</span></h3><p>После 12:00</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=600')"></div><div class="menu-body"><h3>Чизкейк <span class="price">35 TJS</span></h3><p>С малиной</p></div></div>
+      <div class="menu-item"><div class="menu-img" style="background-image:url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600')"></div><div class="menu-body"><h3>Круассан <span class="price">20 TJS</span></h3><p>Французское масло</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="section-title"><h2>Галерея</h2></div>
+    <div class="gallery">
+      <div style="background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=600')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=600')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=600')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600')"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff3e7">
+  <div class="container grid-3">
+    <div class="testi"><i class="fa-solid fa-star"></i><p>"Лучший латте в Хуҷада. Wi-Fi летает, для работы идеально."</p><strong>— Фаридун, IT</strong></div>
+    <div class="testi"><i class="fa-solid fa-star"></i><p>"Чистый дизайн, вежливые бариста. Приходим каждую субботу."</p><strong>— Нигина</strong></div>
+    <div class="testi"><i class="fa-solid fa-star"></i><p>"Плов в кафе — просто бомба! И чизкейк тоже."</p><strong>— Исмоил</strong></div>
+  </div>
+</section>
+
+<section id="bron" class="section">
+  <div class="container" style="max-width:720px">
+    <div class="section-title"><h2>Забронировать стол</h2><p>Онлайн, 30 секунд</p></div>
+    <form class="form" onsubmit="event.preventDefault();alert('Спасибо! Бронь принята. Мы вам перезвоним.') ">
+      <div class="form-grid">
+        <input placeholder="Имя" required>
+        <input placeholder="Телефон +992" required>
+        <input type="date" required>
+        <input type="time" required>
+        <select class="full"><option>2 человека</option><option>3-4 человека</option><option>5+ человек</option><option>Работа / встреча</option></select>
+      </div>
+      <button class="btn full" style="margin-top:16px;width:100%"><i class="fa-solid fa-calendar-check"></i> Забронировать</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container grid-3">
+    <div class="card"><i class="fa-solid fa-location-dot"></i><h3>Контакты</h3><p id="shop-info">☎️ +992 92 222 88 77</p></div>
+    <div class="card"><i class="fa-regular fa-clock"></i><h3>Часы работы</h3><p id="shop-hours">Пн–Вс<br>11:00 — 22:00</p></div>
+    <div class="card"><i class="fa-solid fa-car"></i><h3>Локация</h3><p>Город Худжанд, проспект Рахим Джалиля 5 бывший Ставрополь 5, напротив стадион 20 летие, рядом супермаркет ЁВАР</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 PANDA CAFE • Сделано с любовью в Хуҷада</p>
+  <p style="margin-top:8px;opacity:.7">• Instagram: <a href="https://www.instagram.com/cafepanda.tj/">cafepanda.tj</a></p> 
+</footer>
+<script>
+async function loadMenu(){
+  try{
+    const r = await fetch('/api/products');
+    const products = await r.json();
+    const grid = document.querySelector('.menu-grid');
+    if(grid && products.length){
+      grid.innerHTML = products.map(p=>`
+        <div class="menu-item">
+          <div class="menu-img" style="background-image:url('${p.img || 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600'}')"></div>
+          <div class="menu-body"><h3>${p.name} <span class="price">${p.price} TJS</span></h3><p>${p.desc||''}</p></div>
+        </div>
+      `).join('');
+    }
+  }catch(e){console.log(e)}
+}
+async function loadShop(){
+  try{
+    const s = await (await fetch('/api/shop')).json();
+    document.getElementById('shop-info').innerHTML = `${s.address}<br>${s.phone}<br>@${s.instagram}`;
+    document.getElementById('shop-hours').innerHTML = `Пн–Вс<br>${s.hours}`;
+    document.querySelector('footer p').innerHTML = `© 2026 ${s.name} • Сделано с любовью в Хуҷада`;
+  }catch(e){}
+}
+document.addEventListener('DOMContentLoaded', ()=>{loadMenu();loadShop();});
+</script>
+</body>
+</html>
