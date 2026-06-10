@@ -6,11 +6,8 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`PANDA CAFE running on ${PORT}`));
-}
-module.exports = app;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // --- CONFIG ---
 const ADMIN_NAME = 'panda cafe 777';
@@ -96,7 +93,7 @@ app.put('/api/products/:id', requireAuth, (req,res)=>{
   const id = Number(req.params.id);
   const idx = products.findIndex(p=>p.id===id);
   if(idx===-1) return res.status(404).json({error:'Not found'});
-  products[idx] = {...products[idx], ...req.body, price:Number(req.body.price)};
+  products[idx] = {...products[idx],...req.body, price:Number(req.body.price)};
   writeProducts(products);
   res.json(products[idx]);
 });
@@ -117,13 +114,12 @@ app.post('/api/upload', requireAuth, upload.single('image'), async (req,res)=>{
     if(!req.file) return res.status(400).json({error:'No file'});
     const filename = `panda-${Date.now()}.webp`;
     const filepath = path.join(UPLOAD_DIR, filename);
-    
-    // Compress: resize max 800px, webp quality 75
+
     await sharp(req.file.buffer)
-      .resize({width:800, height:800, fit:'inside', withoutEnlargement:true})
-      .webp({quality:75})
-      .toFile(filepath);
-    
+     .resize({width:800, height:800, fit:'inside', withoutEnlargement:true})
+     .webp({quality:75})
+     .toFile(filepath);
+
     res.json({url:`/uploads/${filename}`});
   }catch(e){
     console.error(e);
@@ -157,7 +153,7 @@ button:hover{background:#D97D54}
 <body>
 <div class="wrap">
   <h1><i class="fa-solid fa-paw"></i> PANDA CAFE Admin</h1>
-  
+
   <div id="login" class="card">
     <h3>Вход</h3>
     <input id="name" placeholder="Имя">
@@ -218,7 +214,7 @@ async function load(){
 async function del(id){if(confirm('Удалить?')){await fetch('/api/products/'+id,{method:'DELETE'});load();}}
 async function edit(id){
   const name=prompt('Новое название:'); if(!name) return;
-  const price=prompt('Новая цена:'); 
+  const price=prompt('Новая цена:');
   await fetch('/api/products/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,price})});
   load();
 }
@@ -226,8 +222,9 @@ async function edit(id){
 </body></html>`);
 });
 
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`PANDA CAFE running`));
-}
+// --- START SERVER FOR RENDER ---
+app.listen(PORT, () => {
+  console.log(`PANDA CAFE running on port ${PORT}`);
+});
+
 module.exports = app;
