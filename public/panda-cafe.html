@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -36,18 +37,51 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,248,240,.9);backdrop-fi
 .card{background:white;border-radius:24px;padding:28px;box-shadow:0 10px 30px rgba(92,61,46,.08);transition:.3s}
 .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(92,61,46,.12)}
 .card i{font-size:28px;color:var(--terra);margin-bottom:12px;display:block}
-.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-@media(max-width:1200px){.menu-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:900px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.menu-grid{grid-template-columns:repeat(3,1fr);gap:10px}.menu-img{height:110px}.menu-body{padding:12px}.menu-body h3{font-size:15px}}
-@media(min-width:1400px){.menu-grid{grid-template-columns:repeat(8,1fr)}}
+
+/* === MENU GRID - ТОЧНО 2-3-4-5-9 === */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr); /* ТЕЛЕФОН = 2 */
+  gap:12px;
+}
+@media (min-width: 640px){ /* ПЛАНШЕТ */
+  .menu-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+}
+@media (min-width: 1024px){ /* PC */
+  .menu-grid{grid-template-columns:repeat(4,1fr);gap:20px}
+}
+@media (min-width: 1440px){ /* TV 1 */
+  .menu-grid{grid-template-columns:repeat(5,1fr)}
+}
+@media (min-width: 1920px){ /* TV 2 */
+  .menu-grid{grid-template-columns:repeat(6,1fr)}
+}
+@media (min-width: 2560px){ /* TV 3 */
+  .menu-grid{grid-template-columns:repeat(7,1fr)}
+}
+@media (min-width: 3000px){ /* TV 4 */
+  .menu-grid{grid-template-columns:repeat(8,1fr)}
+}
+@media (min-width: 3440px){ /* TV 5 */
+  .menu-grid{grid-template-columns:repeat(9,1fr)}
+}
+
+/* Фикс барои нарх, то нашиканад */
+.menu-body h3{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  font-size:16px;
+}
+.price{white-space:nowrap;flex-shrink:0}
 .menu-item{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06);transition:.3s}
 .menu-item:hover{transform:translateY(-4px)}
-.menu-img{height:180px;background-size:cover;background-position:center;transition:transform .3s ease}
+.menu-img{height:160px;background-size:cover;background-position:center;transition:transform .3s ease}
 .menu-item:hover .menu-img{transform:scale(1.05)}
-.menu-body{padding:18px}
-.menu-body h3{display:flex;justify-content:space-between;align-items:center;font-size:18px;margin-bottom:6px}
-.price{color:var(--terra);font-weight:700}
+.menu-body{padding:16px}
+.menu-body h3{display:flex;justify-content:space-between;align-items:center;font-size:17px;margin-bottom:6px}
+@media(max-width:600px){.menu-img{height:120px}.menu-body{padding:12px}.menu-body h3{font-size:15px}}
+
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .gallery div{height:220px;border-radius:16px;background-size:cover;background-position:center;transition:transform .3s ease}
 .gallery div:hover{transform:scale(1.03)}
@@ -142,22 +176,22 @@ footer a{color:var(--gold);text-decoration:none}
 <section id="bron" class="section">
   <div class="container" style="max-width:720px">
     <div class="section-title"><h2>Забронировать стол</h2><p>Онлайн, 30 секунд</p></div>
-    <form class="form" onsubmit="event.preventDefault();alert('Спасибо! Бронь принята. Мы вам перезвоним.') ">
+    <form class="form" id="reservationForm">
       <div class="form-grid">
-        <input placeholder="Имя" required>
-        <input placeholder="Телефон +992" required>
-        <input type="date" required>
-        <input type="time" required>
-        <select class="full"><option>2 человека</option><option>3-4 человека</option><option>5+ человек</option><option>Работа / встреча</option></select>
+        <input id="res-name" placeholder="Имя" required>
+        <input id="res-phone" placeholder="Телефон +992" required>
+        <input id="res-date" type="date" required>
+        <input id="res-time" type="time" required>
+        <select id="res-guests" class="full"><option value="2">2 человека</option><option value="4">3-4 человека</option><option value="6">5+ человек</option><option value="2">Работа / встреча</option></select>
       </div>
-      <button class="btn full" style="margin-top:16px;width:100%"><i class="fa-solid fa-calendar-check"></i> Забронировать</button>
+      <button class="btn full" type="submit" style="margin-top:16px;width:100%"><i class="fa-solid fa-calendar-check"></i> Забронировать</button>
     </form>
   </div>
 </section>
 
 <section id="contact" class="section">
   <div class="container grid-3">
-    <div class="card"><i class="fa-solid fa-location-dot"></i><h3>Контакты</h3><p id="shop-info">☎️ +992 92 222 88 77</p></div>
+    <div class="card"><i class="fa-solid fa-location-dot"></i><h3>Контакты</h3><p id="shop-info">☎ +992 92 222 88 77</p></div>
     <div class="card"><i class="fa-regular fa-clock"></i><h3>Часы работы</h3><p id="shop-hours">Пн–Вс<br>11:00 — 22:00</p></div>
     <div class="card"><i class="fa-solid fa-car"></i><h3>Локация</h3><p>Город Худжанд, проспект Рахим Джалиля 5 бывший Ставрополь 5, напротив стадион 20 летие, рядом супермаркет ЁВАР</p></div>
   </div>
@@ -191,6 +225,34 @@ async function loadShop(){
     document.querySelector('footer p').innerHTML = `© 2026 ${s.name} • Сделано с любовью в Хуҷада`;
   }catch(e){}
 }
+
+// === RESERVATION FORM - WORKING ===
+document.getElementById('reservationForm')?.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('res-name').value,
+    phone: document.getElementById('res-phone').value,
+    date: document.getElementById('res-date').value,
+    time: document.getElementById('res-time').value,
+    guests: document.getElementById('res-guests').value
+  };
+  try{
+    const res = await fetch('/api/reserve', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    if(res.ok){
+      alert('✅ Спасибо! Бронь принята. Мы вам перезвоним.');
+      e.target.reset();
+    } else {
+      alert('Ошибка сервера');
+    }
+  }catch(err){
+    alert('Нет связи с сервером');
+  }
+});
+
 document.addEventListener('DOMContentLoaded', ()=>{loadMenu();loadShop();});
 </script>
 </body>
