@@ -227,6 +227,7 @@ async function edit(id){
 });
 
 if (require.main === module) {
-  app.listen(PORT, ()=> console.log('PANDA server running on http://localhost:'+PORT));
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`PANDA CAFE running`));
 }
 module.exports = app;
