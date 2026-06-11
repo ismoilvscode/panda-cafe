@@ -167,7 +167,7 @@ footer a{color:var(--gold);text-decoration:none}
 
 <section class="section" style="background:#fff3e7">
   <div class="container grid-3">
-    <div class="testi"><i class="fa-solid fa-star"></i><p>"Лучший латте в Хуҷада. Wi-Fi летает, для работы идеально."</p><strong>— Фаридун, IT</strong></div>
+    <div class="testi"><i class="fa-solid fa-star"></i><p>"Лучший латте в Хуҷанда. Wi-Fi летает, для работы идеально."</p><strong>— Фаридун, IT</strong></div>
     <div class="testi"><i class="fa-solid fa-star"></i><p>"Чистый дизайн, вежливые бариста. Приходим каждую субботу."</p><strong>— Нигина</strong></div>
     <div class="testi"><i class="fa-solid fa-star"></i><p>"Плов в кафе — просто бомба! И чизкейк тоже."</p><strong>— Исмоил</strong></div>
   </div>
@@ -198,7 +198,7 @@ footer a{color:var(--gold);text-decoration:none}
 </section>
 
 <footer>
-  <p>© 2026 PANDA CAFE • Сделано с любовью в Хуҷада</p>
+  <p>© 2026 PANDA CAFE • Сделано с любовью в Хуҷанда</p>
   <p style="margin-top:8px;opacity:.7">• Instagram: <a href="https://www.instagram.com/cafepanda.tj/">cafepanda.tj</a></p> 
 </footer>
 <script>
@@ -222,7 +222,7 @@ async function loadShop(){
     const s = await (await fetch('/api/shop')).json();
     document.getElementById('shop-info').innerHTML = `${s.address}<br>${s.phone}<br>@${s.instagram}`;
     document.getElementById('shop-hours').innerHTML = `Пн–Вс<br>${s.hours}`;
-    document.querySelector('footer p').innerHTML = `© 2026 ${s.name} • Сделано с любовью в Хуҷада`;
+    document.querySelector('footer p').innerHTML = `© 2026 ${s.name} • Сделано с любовью в Хуҷанда`;
   }catch(e){}
 }
 
